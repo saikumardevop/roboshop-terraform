@@ -6,6 +6,10 @@ resource "aws_instance" "frontend" {
     }
 }
 
+out put "frontend"{
+    value = aws_instance.frontend.public_ip
+}
+
 resource "aws_instance" "mongodb" {
   ami = "ami-0b4f379183e5706b9"
   instance_type = "t2.micro"
