@@ -4,6 +4,10 @@ data "aws_ami" "centos" {
   name_regex       = "Centos-8-DevOps-Practice"
 }
 
+variable "Instance_type" {
+    default = "t2.micro"
+}
+
 resource "aws_instance" "frontend" {
   ami = data.aws_ami.centos.image_id
   instance_type = "t2.micro"
