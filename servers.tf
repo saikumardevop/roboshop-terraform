@@ -16,43 +16,44 @@ variable "components" {
     }
   }
 }
-  mongodb = {
+    mongodb = {
     name          = "mongodb"
     Instance_type = "t3.small"
   }
-  catalogue = {
+    catalogue = {
     name          = "catalogue"
     Instance_type = "t3.small"
   }
-  redis = {
+    redis = {
     name          = "redis"
     Instance_type = "t3.small"
   }
-  user = {
+    user = {
     name          = "user"
     Instance_type = "t3.small"
   }
-  cart = {
+    cart = {
     name          = "cart"
     Instance_type = "t3.small"
   }
-  mysql = {
+    mysql = {
     name          = "mysql"
     Instance_type = "t3.small"
   }
-  shipping = {
+    shipping = {
     name          = "shipping"
     Instance_type = "t3.small"
   }
-  rabbitmq = {
+    rabbitmq = {
     name          = "rabbitmq"
     Instance_type = "t3.small"
   }
-  payment = {
-    name          = "payment"
-    Instance_type = "t3.small"
+    payment = {
+      name          = "payment"
+      Instance_type = "t3.small"
+    }
   }
-
+}
 
 resource "aws_instance" "instance" {
   for_each    = var.components
