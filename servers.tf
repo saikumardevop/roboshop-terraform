@@ -12,7 +12,12 @@ variable "Instance_type" {
     default = "t2.micro"
 }
 
+variable "compenents" {
+  default = ["frontend", "mongodb", "catalogue"]
+}
+
 resource "aws_instance" "frontend" {
+count = length(var.compenents)
   ami = data.aws_ami.centos.image_id
   instance_type = var.Instance_type
   vpc_security_group_ids = [data.aws_security_group.launch-wizard-1.id]
