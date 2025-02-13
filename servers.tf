@@ -17,8 +17,8 @@ variable "components" {
 }
 
 resource "aws_instance" "instance" {
-count = length(var.components)
-  ami = data.aws_ami.centos.image_id
+  count = length(var.components)
+  ami   = data.aws_ami.centos.image_id
   instance_type = var.Instance_type
   vpc_security_group_ids = [data.aws_security_group.launch-wizard-1.id]
 
@@ -27,14 +27,15 @@ count = length(var.components)
     }
 }
 
-# resource "aws_route53_record" "frontend" {
-#   zone_id = "Z0850283ZZAF9MM79867"
-#   name    = "frontend.saikumar22.store"
-#   type    = "A"
-#   ttl     = 30
-#   records = [aws_instance.frontend.private_ip]
-# }
-#
+resource "aws_route53_record" "frontend" {
+  zone_id = "Z0850283ZZAF9MM79867"
+  name    = "frontend.saikumar22.store"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.frontend.private_ip]
+}
+
+
 # resource "aws_instance" "mongodb" {
 #   ami = data.aws_ami.centos.image_id
 #   instance_type = var.Instance_type
