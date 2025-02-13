@@ -8,10 +8,7 @@ data "aws_security_group" "launch-wizard-1" {
   name = "launch-wizard-1"
 }
 
-variable "Instance_type" {
-    default = "t2.micro"
-}
-
+variable "components"
 default = {
   frontend = {
     name          = "frontend"
