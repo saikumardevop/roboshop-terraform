@@ -8,12 +8,14 @@ data "aws_security_group" "launch-wizard-1" {
   name = "launch-wizard-1"
 }
 
-variable "components"
-default = {
-  frontend = {
-    name          = "frontend"
-    Instance_type = "t3.small"
+variable "components" {
+  default = {
+    frontend = {
+      name          = "frontend"
+      Instance_type = "t3.small"
+    }
   }
+}
   mongodb = {
     name          = "mongodb"
     Instance_type = "t3.small"
