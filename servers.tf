@@ -12,28 +12,69 @@ variable "Instance_type" {
     default = "t2.micro"
 }
 
-variable "components" {
-  default = ["frontend", "mongodb", "catalogue"]
-}
+default = {
+  frontend = {
+    name          = "frontend"
+    Instance_type = "t3.small"
+  }
+  mongodb = {
+    name          = "mongodb"
+    Instance_type = "t3.small"
+  }
+  catalogue = {
+    name          = "catalogue"
+    Instance_type = "t3.small"
+  }
+  redis = {
+    name          = "redis"
+    Instance_type = "t3.small"
+  }
+  user = {
+    name          = "user"
+    Instance_type = "t3.small"
+  }
+  cart = {
+    name          = "cart"
+    Instance_type = "t3.small"
+  }
+  mysql = {
+    name          = "mysql"
+    Instance_type = "t3.small"
+  }
+  shipping = {
+    name          = "shipping"
+    Instance_type = "t3.small"
+  }
+  rabbitmq = {
+    name          = "rabbitmq"
+    Instance_type = "t3.small"
+  }
+  payment = {
+    name          = "payment"
+    Instance_type = "t3.small"
+  }
+
 
 resource "aws_instance" "instance" {
-  count = length(var.components)
+  for_each    = var.components
   ami   = data.aws_ami.centos.image_id
-  instance_type = var.Instance_type
+  instance_type = each.value["instance_type"]
   vpc_security_group_ids = [data.aws_security_group.launch-wizard-1.id]
 
   tags = {
-    Name = var.components[count.index]
+    Name = each.value["name"]
     }
 }
 
-resource "aws_route53_record" "frontend" {
-  zone_id = "Z0850283ZZAF9MM79867"
-  name    = "frontend.saikumar22.store"
-  type    = "A"
-  ttl     = 30
-  records = [aws_instance.frontend.private_ip]
-}
+//
+# resource "aws_route53_record" "record" {
+#   for_each    = var.components
+#   zone_id = "Z0850283ZZAF9MM79867"
+#   name    = ${each.value["name"]}saikumar22.store
+#   type    = "A"
+#   ttl     = 30
+#   records = [aws_instance[each.value["name"]].private_ip]
+# }
 
 
 # resource "aws_instance" "mongodb" {
