@@ -30,11 +30,11 @@ variable "components" {
   }
     user = {
       name          = "user"
-      Instance_type = "t3.small"
+      Instance_type = "t3.micro"
   }
     cart = {
       name          = "cart"
-      Instance_type = "t3.small"
+      Instance_type = "t3.micro"
   }
     mysql = {
       name          = "mysql"
@@ -42,7 +42,7 @@ variable "components" {
   }
     shipping = {
       name          = "shipping"
-      Instance_type = "t3.small"
+      Instance_type = "t3.medium"
   }
     rabbitmq = {
       name          = "rabbitmq"
