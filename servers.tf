@@ -14,40 +14,38 @@ variable "components" {
       name          = "frontend"
       Instance_type = "t3.small"
     }
-  }
-}
     mongodb = {
       name          = "mongodb"
       Instance_type = "t3.small"
-  }
+    }
     catalogue = {
       name          = "catalogue"
       Instance_type = "t3.small"
-  }
+    }
     redis = {
       name          = "redis"
       Instance_type = "t3.small"
-  }
+    }
     user = {
       name          = "user"
       Instance_type = "t3.micro"
-  }
+    }
     cart = {
       name          = "cart"
       Instance_type = "t3.micro"
-  }
+    }
     mysql = {
       name          = "mysql"
       Instance_type = "t3.small"
-  }
+    }
     shipping = {
       name          = "shipping"
       Instance_type = "t3.medium"
-  }
+    }
     rabbitmq = {
       name          = "rabbitmq"
       Instance_type = "t3.small"
-  }
+    }
     payment = {
       name          = "payment"
       Instance_type = "t3.small"
