@@ -16,7 +16,7 @@ variable "components" {
     }
     mongodb = {
       name          = "mongodb"
-      Instance_type = "t3.small"
+      instance_type = "t3.small"
     }
     catalogue = {
       name          = "catalogue"
