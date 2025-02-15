@@ -9,6 +9,7 @@ resource "aws_instance" "instance" {
   }
 }
 
+
 resource "aws_route53_record" "record" {
   for_each    = var.components
   zone_id     = "Z0850283ZZAF9MM79867"
