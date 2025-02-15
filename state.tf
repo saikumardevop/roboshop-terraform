@@ -1,3 +1,3 @@
- bucket = "terraform-b9"
- key    = "roboshop/dev/terraform.tfstate"
- region = "us-east-1"
+terraform {
+  backend "s3" {}
+}
