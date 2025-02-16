@@ -8,9 +8,9 @@ data "aws_security_group" "launch-wizard-6" {
   name = "launch-wizard-6"
 }
 
-variable "instance_type" {
-  default = "t2.micro"
-}
+# variable "instance_type" {
+#   default = "t2.micro"
+#   }
 
 variable "components" {
   default ={
@@ -73,11 +73,11 @@ resource "aws_instance" "components" {
   }
 }
 
-# resource "aws_route53_record" "frontend" {
-# for_each               = var.components
-#   zone_id = "Z07633651VJKTEQ867N3J"
-#   name    = "frontend-dev.rdevopsb72.online"
-#   type    = "A"
-#   ttl     = 30
-#   records = [aws_instance.frontend.private_ip]
-# }
+resource "aws_route53_record" "records" {
+  for_each         = var.components
+  zone_id          = "Z07633651VJKTEQ867N3J"
+  name             = "${each.value["name"]}-dev.rajasekhar72.store"
+  type             = "A"
+  ttl              = 30
+  records          = [aws_instance.instance[each.value["name"]].private_ip]
+}
