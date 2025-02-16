@@ -13,21 +13,68 @@ variable "instance_type" {
 }
 
 variable "components" {
-  default = [ "frontend", "mongodb" , "catalogue" ]
+  default ={
+    frontend = {
+      name          = "frontend"
+      instance_type = "t2.micro"
+    }
+    mongodb = {
+      name          = "mongodb"
+      instance_type = "t2.micro"
+    }
+    catalogue = {
+      name          = "catalogue"
+      instance_type = "t3.medium"
+    }
+    redis = {
+      name          = "redis"
+      instance_type = "t3.micro"
+    }
+    user = {
+      name          = "user"
+      instance_type = "t3.micro"
+    }
+    cart = {
+      name          = "cart"
+      instance_type = "t3.micro"
+    }
+    mysql = {
+      name          = "mysql"
+      instance_type = "t3.small"
+      password      = "RoboShop@1"
+    }
+    shipping = {
+      name          = "shipping"
+      instance_type = "t3.medium"
+      password      = "RoboShop@1"
+    }
+    rabbitmq = {
+      name          = "rabbitmq"
+      instance_type = "t2.micro"
+      password      = "roboshop123"
+
+    }
+    payment = {
+      name          = "payment"
+      instance_type = "t3.micro"
+      password      = "roboshop123"
+    }
+  }
 }
 
 resource "aws_instance" "components" {
-  count =length(var.components)
+  for_each               = var.components
   ami                    = data.aws_ami.centos.image_id
-  instance_type          =var.instance_type
+  instance_type          = each.value["instance_type"]
   vpc_security_group_ids = [data.aws_security_group.launch-wizard-6.id]
 
   tags = {
-    Name = var.components [count.index]
+    Name = each.value ["name"]
   }
 }
 
 # resource "aws_route53_record" "frontend" {
+# for_each               = var.components
 #   zone_id = "Z07633651VJKTEQ867N3J"
 #   name    = "frontend-dev.rdevopsb72.online"
 #   type    = "A"
