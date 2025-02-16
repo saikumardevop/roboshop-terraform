@@ -1,7 +1,7 @@
 resource "aws_instance" "instance" {
   ami           = data.aws_ami.centos.image_id
   instance_type = var.instance_type
-  vpc_security_group_ids = [data.aws_security_group.launch-wizard-16.id]
+  vpc_security_group_ids = [data.aws_security_group.launch-wizard-6.id]
 
   tags = {
     Name = var.component_name
