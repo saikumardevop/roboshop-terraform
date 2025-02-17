@@ -1,6 +1,6 @@
 resource "aws_instance" "instance" {
-  ami           = data.aws_ami.centos.image_id
-  instance_type = var.instance_type
+  ami                    = data.aws_ami.centos.image_id
+  instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.launch-wizard-6.id]
 
   tags = {
@@ -15,7 +15,7 @@ resource "null_resource" "provisioner" {
 
     connection {
       type     = "ssh"
-      user     = "centos"
+      user     = "root "
       password = "DevOps321"
       host     = aws_instance.instance.private_ip
     }
@@ -24,7 +24,7 @@ resource "null_resource" "provisioner" {
       "rm -rf roboshop-shell",
       "git clone https://github.com/RajasekharDevo/roboshop-shell",
       "cd roboshop-shell",
-      "sudo bash ${var.component_name}.sh.${var.password}"
+      "sudo bash ${var.component_name}.sh ${var.password}"
     ]
   }
 }
