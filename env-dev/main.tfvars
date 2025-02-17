@@ -1,11 +1,11 @@
 components = {
     frontend = {
       name          = "frontend"
-      instance_type = "t2.micro"
+      instance_type = "t3.micro"
     }
     mongodb = {
       name          = "mongodb"
-      instance_type = "t2.micro"
+      instance_type = "t3.micro"
     }
     catalogue = {
       name          = "catalogue"
