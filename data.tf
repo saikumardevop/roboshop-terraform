@@ -5,6 +5,6 @@ data "aws_ami" "centos" {
 }
 
 
-data "aws_security_group" "launch-wizard-3" {
-  name = "launch-wizard-3"
+data "aws_security_group" "launch-wizard-5" {
+  name = "launch-wizard-5"
 }
