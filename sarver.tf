@@ -14,8 +14,8 @@ data "aws_ami" "centos" {
   }
 
 
-data "aws_security_group" "launch-wizard-3" {
-  name = "launch-wizard-3"
+data "aws_security_group" "launch-wizard-5" {
+  name = "launch-wizard-5"
 
 variable.components = {
   defalut ={
@@ -72,7 +72,7 @@ variable.components = {
    for_each = var.components
    ami                    = data.aws_ami.centos.image_id
    instance_type          = each.value["instance_type"]
-   vpc_security_group_ids = [data.aws_security_group.launch-wizard-3.id]
+   vpc_security_group_ids = [data.aws_security_group.launch-wizard-5.id]
 
    tags = {
      Name = each.value["name"]
