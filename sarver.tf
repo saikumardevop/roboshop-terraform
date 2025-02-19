@@ -8,16 +8,6 @@
 #   password = lookup(each.value, "password", "null")
 # }
 
-data "aws_ami" "centos" {
-  owners = ["973714476881"]
-  most_recent = true
-  name_regex = "Centos-8-DevOps-Practice"
-  }
-
-
-data "aws_security_group" "launch-wizard-5" {
-  name = "launch-wizard-5"
-}
 
 
  resource "aws_instance" "instance" {
@@ -29,25 +19,25 @@ data "aws_security_group" "launch-wizard-5" {
    tags = {
      Name = each.value["name"]
    }
- }
 
-#  provisioner "remote-exec" {
-#
-#    connection {
-#      type     = "ssh"
-#      user     = "centos"
-#      password = "DevOps321"
-#      host     = self.private_ip
-#    }
-#
-#    inline = [
-#      "rm -rf roboshop-shell",
-#      "git clone https://github.com/saikumardevop/roboshop-shell1.git",
-#      "cd roboshop-shell1",
-#      "sudo bash ${each.value["name"]}.sh"
-#    ]
-#  }
-# }
+
+ provisioner "remote-exec" {
+
+   connection {
+     type     = "ssh"
+     user     = "centos"
+     password = "DevOps321"
+     host     = self.private_ip
+   }
+
+   inline = [
+     "rm -rf roboshop-shell",
+     "git clone https://github.com/saikumardevop/roboshop-shell1.git",
+     "cd roboshop-shell1",
+     "sudo bash ${each.value["name"]}.sh"
+   ]
+ }
+}
 
 
 resource "aws_route53_record" "records" {
