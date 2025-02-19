@@ -16,6 +16,7 @@ data "aws_ami" "centos" {
 
 data "aws_security_group" "launch-wizard-5" {
   name = "launch-wizard-5"
+}
 
 variable "components" {
   defalut ={
