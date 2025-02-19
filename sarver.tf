@@ -19,7 +19,6 @@ data "aws_security_group" "launch-wizard-5" {
   name = "launch-wizard-5"
 }
 
-variable "components" {}
 
  resource "aws_instance" "instance" {
    for_each      = var.components
