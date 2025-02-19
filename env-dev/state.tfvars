@@ -1,3 +1,3 @@
-# bucket = "terraform-d45"
-# key = "roboshop/dev/terraform.tfstate"
-# region = "us-east-1"
+bucket = "terraform-d77"
+key = "roboshop/dev/terraform.tfstate"
+region = "us-east-1"
