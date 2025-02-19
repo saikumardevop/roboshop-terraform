@@ -20,7 +20,7 @@ data "aws_security_group" "launch-wizard-5" {
 }
 
 variable "components" {
-  defalut ={
+  default ={
     frontend = {
       name          = "frontend"
       instance_type = "t3.micro"
