@@ -7,6 +7,7 @@
 #   instance_type  = each.value["instance_type"]
 #   password = lookup(each.value, "password", "null")
 # }
+
 data "aws_ami" "centos" {
   owners = ["973714476881"]
   most_recent = true
