@@ -22,23 +22,23 @@
  }
 
 
-#  provisioner "remote-exec" {
-#
-#    connection {
-#      type     = "ssh"
-#      user     = "centos"
-#      password = "DevOps321"
-#      host     = self.private_ip
-#    }
-#
-#    inline = [
-#      "rm -rf roboshop-shell1",
-#      "git clone https://github.com/saikumardevop/roboshop-shell1.git",
-#      "cd roboshop-shell1",
-#      "sudo bash ${each.value["name"]}.sh"
-#    ]
-#  }
-# }
+ provisioner "remote-exec" {
+
+   connection {
+     type     = "ssh"
+     user     = "centos"
+     password = "DevOps321"
+     host     = self.private_ip
+   }
+
+   inline = [
+     "rm -rf roboshop-shell1",
+     "git clone https://github.com/saikumardevop/roboshop-shell1.git",
+     "cd roboshop-shell1",
+     "sudo bash ${each.value["name"]}.sh"
+   ]
+ }
+}
 
 
 
