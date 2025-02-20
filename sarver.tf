@@ -19,7 +19,8 @@
    tags = {
      Name = each.value["name"]
    }
-
+ }
+resource "null_resource" "provisioner"{
  provisioner "remote-exec" {
 
    connection {
@@ -37,6 +38,7 @@
    ]
  }
 }
+
 
 
 resource "aws_route53_record" "records" {
