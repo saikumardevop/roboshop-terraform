@@ -4,7 +4,8 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids = [data.aws_security_group.launch-wizard-5.id]
 
   tags = {
-    Name = local.name
+    Name =   name = var.env != "" ? "${var.component_name}-${var.env}" : var.component_name
+
   }
 }
 
