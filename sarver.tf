@@ -1,5 +1,5 @@
 module "servers" {
-    for_each     = var.components
+    for_each     = variable.components
 
   source         = "./module"
   component_name = each.value["name"]
