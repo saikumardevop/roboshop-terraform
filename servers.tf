@@ -44,11 +44,11 @@ resource "null_resource" "provisioner" {
 
 
 resource "aws_route53_record" "records" {
-        for_each       =var.components
-  zone_id   = "Z082431210MK90HJCBQI2"
-  name      = "${each.value["name"]}-dev.saikumar22.store"
-  type      = "A"
-  ttl       = 30
-  records   = [aws_instance.instance[each.value["name"]].private_ip]
+  for_each       = var.components
+  zone_id        = "Z082431210MK90HJCBQI2"
+  name           = "${each.value["name"]}-dev.saikumar22.store"
+  type           = "A"
+  ttl            = 30
+  records        = [aws_instance.instance[each.value["name"]].private_ip]
 }
 
