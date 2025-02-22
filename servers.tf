@@ -16,7 +16,7 @@ resource "aws_instance" "instance" {
 
   tags = {
     Name = each.key
-    Name =  each.value["name"]
+    # Name =  each.value["name"]
 
   }
 }
