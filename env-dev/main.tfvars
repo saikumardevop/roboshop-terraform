@@ -58,7 +58,7 @@ database_servers = {
   mysql = {
     name           = "mysql"
     instance_type  = "t3.small"
-    password       = "roboshop@1"
+    password       = "RoboShop@1"
   }
   redis = {
     name           = "redis"
