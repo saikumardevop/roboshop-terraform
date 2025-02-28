@@ -35,7 +35,5 @@ resource "aws_route53_record" "records" {
   type      = "A"
   ttl       = 30
   records   = [aws_instance.instance.private_ip]
-
-  depends_on = [aws_instance.instance]
 }
 
