@@ -29,7 +29,6 @@ resource "null_resource" "provisioner" {
   }
 }
 
-
 resource "aws_route53_record" "records" {
 zone_id   = "Z082431210MK90HJCBQI2"
 name      = "${var.component_name}-dev.saikumar22.store"
